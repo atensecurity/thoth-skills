@@ -91,7 +91,8 @@ may make these requests with your tools and credentials:
 ## Support
 
 Documentation: [docs.atensecurity.com/docs/agent-skills](https://docs.atensecurity.com/docs/agent-skills).
-Questions: support@atensecurity.com.
+Help: [atensecurity.com/support](https://atensecurity.com/support/) or
+support@atensecurity.com.
 
 This repository is published from the Aten Security monorepo; pull requests
 here are reviewed and applied upstream.
