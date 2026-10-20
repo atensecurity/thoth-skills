@@ -11,7 +11,16 @@
   "homepage": "https://docs.atensecurity.com/docs/agent-skills",
   "repository": "https://github.com/atensecurity/thoth-skills",
   "license": "Apache-2.0",
-  "keywords": ["thoth", "ai-agents", "governance", "policy", "mcp", "security", "terraform"],
+  "keywords": [
+    "thoth",
+    "ai-agents",
+    "governance",
+    "policy",
+    "mcp",
+    "security",
+    "terraform"
+  ],
+  "icon": "./assets/logo.png",
   "documentationUrl": "https://docs.atensecurity.com/docs/agent-skills",
   "supportUrl": "https://docs.atensecurity.com/docs/getting-started/troubleshooting",
   "privacyPolicyUrl": "https://atensecurity.com/legal/privacy/",
