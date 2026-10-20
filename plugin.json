@@ -1,0 +1,25 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "thoth",
+  "version": "0.1.0",
+  "description": "Skills for governing AI agents with Thoth: put tool calls behind runtime enforcement, write and choose policy, configure Thoth as code, govern MCP servers, and troubleshoot decisions.",
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Thoth",
+        "shortDescription": "Govern AI agents with Thoth runtime enforcement",
+        "longDescription": "Thoth evaluates each AI agent action before it executes and returns ALLOW, STEP_UP or BLOCK. These skills help you put an agent's tool calls behind Thoth, choose and write policy, configure Thoth with Terraform, Pulumi, thothctl or its configuration MCP server, govern MCP servers with the Thoth proxy, and troubleshoot decisions.",
+        "developerName": "Aten Security",
+        "category": "Developer Tools",
+        "websiteURL": "https://docs.atensecurity.com/docs/agent-skills",
+        "privacyPolicyURL": "https://atensecurity.com/legal/privacy/",
+        "termsOfServiceURL": "https://atensecurity.com/legal/terms/",
+        "defaultPrompt": [
+          "Put this agent's tool calls behind Thoth enforcement",
+          "Which Thoth profile fits this agent, and what would it step up or block?",
+          "Why did Thoth refuse this tool call?"
+        ]
+      }
+    }
+  }
+}

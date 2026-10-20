@@ -1,0 +1,18 @@
+{
+  "name": "atensecurity",
+  "owner": {
+    "name": "Aten Security",
+    "email": "support@atensecurity.com"
+  },
+  "metadata": {
+    "description": "Aten Security plugins for Claude Code"
+  },
+  "plugins": [
+    {
+      "name": "thoth",
+      "source": "./",
+      "description": "Govern AI agents with Thoth: enforcement, policy, configuration as code, MCP proxy and troubleshooting.",
+      "category": "security"
+    }
+  ]
+}
