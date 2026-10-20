@@ -68,6 +68,26 @@ variables or a secret manager, never in code.
   the browser.
 - They don't make compliance or certification claims.
 
+## What the skills connect to
+
+The plugin contains instructions only: no hooks, scripts, MCP servers or
+bundled code, and it sends nothing on its own. When you use a skill, your agent
+may make these requests with your tools and credentials:
+
+- **Thoth documentation.** It reads public pages from
+  `https://docs.atensecurity.com` (Markdown pages and `llms.txt`) to get current
+  versions and APIs. These requests carry no data from your session.
+- **Your Thoth workspace, when you ask.** It runs the tools you choose
+  (`thothctl`, the Terraform or Pulumi provider, the Thoth SDKs, or the Thoth
+  configuration MCP server) against your own workspace, which sends the
+  configuration changes and decision requests you approve. Your workspace
+  keeps its configuration and decision evidence under your agreement with Aten
+  Security and the [privacy policy](https://atensecurity.com/legal/privacy/).
+- **Package registries, when you install something.** Installing an SDK,
+  provider or the `thoth` CLI fetches it from where it is published: PyPI, npm,
+  the Go module proxy, the Terraform Registry, or the release channel named in
+  the Thoth docs.
+
 ## Support
 
 Documentation: [docs.atensecurity.com/docs/agent-skills](https://docs.atensecurity.com/docs/agent-skills).
