@@ -32,12 +32,17 @@ Update with `claude plugin update thoth@atensecurity`.
 ### Codex
 
 ```bash
-codex plugin marketplace add atensecurity/thoth-skills
-codex plugin add thoth@atensecurity
+curl -fsSL https://raw.githubusercontent.com/atensecurity/thoth-skills/main/install.sh | sh
 ```
 
-Or open `/plugins` in Codex and install **Thoth** from the Aten Security
-marketplace. Update with `codex plugin marketplace upgrade atensecurity`.
+This installs the skills into `~/.agents/skills`, where Codex loads them
+automatically (restart Codex if they don't appear). Run it again to update.
+Options: `--project` installs into `./.agents/skills` for one repository,
+`--ref <tag>` installs a specific release, and `--uninstall` removes them. To
+read the script first, open
+[`install.sh`](https://github.com/atensecurity/thoth-skills/blob/main/install.sh).
+
+A Codex plugin listing is pending OpenAI's review; until then, use the script.
 
 ### Other agents
 
