@@ -61,6 +61,8 @@ Useful tools: `get_setup_status`, `get_attention`, `list_agents`,
 `list_discovered_agents`, `preview_discovered_agent`, `get_slack_approvals`,
 `list_slack_reviewer_candidates`, `preview_slack_approvals`, `get_data_handling`,
 `preview_data_handling`, `get_siem_decision_stream`, `preview_siem_decision_stream`,
+`get_org_security_settings`, `preview_org_security_settings` (signed-in org admins; read
+`caller_address` first and keep it in any IP allowlist, or the change is refused),
 `preview_workspace_settings` (no secrets; those stay with `thothctl settings set`), `list_team_members`,
 `preview_team_member` (signed-in admins only), `get_held_action`, `preview_action_resolution`
 (a person confirms it in the browser; never approve a hold on the user's behalf), `list_policy_exceptions`,
