@@ -78,7 +78,9 @@ or was waived; never claim screening or provenance results yourself), `preview_e
 them to observe or enforce, one or up to 200 at a time; lift one quarantine), `preview_fleet` (create, update or delete a
 fleet; deploy, pause or roll back its rollout), `preview_device_governance` (MDM sync; MDM and browser
 providers on or off; browser policies on, off, observe or enforce), `preview_agent_registration`
-(register an agent or change its name or owner; it never grants tools), `preview_api_key_revocation` (revoke a
+(register an agent or change its name or owner; it never grants tools), `preview_session_response`
+(isolate a session by quarantining its agent, re-simulate it, or acknowledge a violation),
+`preview_api_key_revocation` (revoke a
 workspace or agent key; it cannot be undone, and new keys come from `thothctl` or Terraform), and reads for the rest of the workspace: `list_api_keys`,
 `list_fleets`, `get_fleet`, `list_endpoints`, `list_mcp_vendors`, `list_mdm_providers`,
 `list_browser_providers`, `list_browser_policies`, `get_billing`, `get_reports_overview`,
