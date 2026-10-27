@@ -74,8 +74,8 @@ and you never attest to one), `preview_policy_bundle` (publish a version with th
 roll back or remove one; enforce and rollback change decisions at once, so show the user the policy
 and prefer observe first), `preview_model_artifact` (register an artifact with its SHA-256, waive
 screening with the user's own reason, or activate once provenance is verified and it passed screening
-or was waived; never claim screening or provenance results yourself), `preview_endpoint` (quarantine one endpoint,
-lift its quarantine, or set it to observe or enforce), `preview_fleet` (create, update or delete a
+or was waived; never claim screening or provenance results yourself), `preview_endpoint` (quarantine endpoints or set
+them to observe or enforce, one or up to 200 at a time; lift one quarantine), `preview_fleet` (create, update or delete a
 fleet; deploy, pause or roll back its rollout), `preview_api_key_revocation` (revoke a
 workspace or agent key; it cannot be undone, and new keys come from `thothctl` or Terraform), and reads for the rest of the workspace: `list_api_keys`,
 `list_fleets`, `get_fleet`, `list_endpoints`, `list_mcp_vendors`, `list_mdm_providers`,
