@@ -74,7 +74,8 @@ and you never attest to one), `preview_policy_bundle` (publish a version with th
 roll back or remove one; enforce and rollback change decisions at once, so show the user the policy
 and prefer observe first), `preview_model_artifact` (register an artifact with its SHA-256, waive
 screening with the user's own reason, or activate once provenance is verified and it passed screening
-or was waived; never claim screening or provenance results yourself), and reads for the rest of the workspace: `list_api_keys`,
+or was waived; never claim screening or provenance results yourself), `preview_endpoint` (quarantine one endpoint,
+lift its quarantine, or set it to observe or enforce), and reads for the rest of the workspace: `list_api_keys`,
 `list_fleets`, `get_fleet`, `list_endpoints`, `list_mcp_vendors`, `list_mdm_providers`,
 `list_browser_providers`, `list_browser_policies`, `get_billing`, `get_reports_overview`,
 `verify_evidence_chain`, `list_model_artifacts`, `get_model_artifact`, `list_policy_bundles`,
