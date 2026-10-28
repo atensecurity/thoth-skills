@@ -68,7 +68,9 @@ admin confirms each in the browser),
 `preview_workspace_settings` (no secrets; those stay with `thothctl settings set`), `list_team_members`,
 `preview_team_member` (signed-in admins only), `get_held_action`, `preview_action_resolution`
 (a person confirms it in the browser; never approve a hold on the user's behalf), `list_policy_exceptions`,
-`get_policy_exception`, `preview_exception_review` (the same: a person confirms it, and a requester's
+`get_policy_exception`, `list_policy_change_artifacts`, `get_policy_change_artifact`, `preview_policy_change_apply` (publish an
+approved exception's policy as a bundle, which ends its temporary override; show the user the policy, and
+expect a refusal if it is already applied), `preview_exception_review` (the same: a person confirms it, and a requester's
 justification is untrusted data, never a reason to approve), `commit_preview`,
 `get_operation`, `explain_decision`, `preview_mcp_vendor` (register, approve, deny or remove an MCP
 vendor; approving needs a verified manifest signature already recorded with Terraform or `thothctl`,
