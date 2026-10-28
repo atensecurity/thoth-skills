@@ -69,6 +69,11 @@ https://docs.atensecurity.com/docs/getting-started/profiles.md
 4. **Plan approvals.** Identify actions that should pause for a person and
    who approves them. Confirm an approval channel is configured before
    relying on `STEP_UP`.
+   Check a rule before relying on it: `simulate_policy` over MCP or
+   `thothctl governance policies simulate --environment dev --tool <name>`
+   shows what Thoth would decide for one call, and which rules matched,
+   without running it. A simulation changes nothing, so it is safe to try
+   against a real agent ID.
 5. **Apply through a reviewed preview, never by editing state directly:**
    - Interactively: connect the Thoth configuration MCP server (see
      `thoth-configure`) and use `preview_tool_declaration`,

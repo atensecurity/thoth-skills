@@ -77,7 +77,8 @@ vendor; approving needs a verified manifest signature already recorded with Terr
 and you never attest to one), `preview_policy_bundle` (publish a version with the policy inline,
 roll back or remove one; enforce and rollback change decisions at once, so show the user the policy
 and prefer observe first), `preview_policy_rule` (create, update, delete, toggle or promote a rule, always naming dev or prod;
-a rule from someone who is not an org admin waits for an org admin's approval), `get_profile_rules` and `list_profile_rule_versions`
+a rule from someone who is not an org admin waits for an org admin's approval; `simulate_policy` checks what a rule
+would decide for one tool call without running it), `get_profile_rules` and `list_profile_rule_versions`
 (read a profile's rules and their history; customise them with policy rules), `preview_model_artifact` (register an artifact with its SHA-256, waive
 screening with the user's own reason, or activate once provenance is verified and it passed screening
 or was waived; never claim screening or provenance results yourself), `preview_endpoint` (quarantine endpoints or set
