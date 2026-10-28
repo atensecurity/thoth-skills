@@ -89,7 +89,7 @@ providers on or off; browser policies on, off, observe or enforce), `preview_age
 (isolate a session by quarantining its agent, re-simulate it, or acknowledge a violation),
 `preview_api_key_revocation` (revoke a
 workspace or agent key; it cannot be undone, and new keys come from `thothctl` or Terraform), and reads for the rest of the workspace: `list_api_keys`,
-`list_fleets`, `get_fleet`, `list_endpoints`, `list_mcp_vendors`, `list_mdm_providers`,
+`list_fleets`, `get_fleet`, `list_endpoints`, `list_mcp_vendors`, `verify_mcp_catalog`, `list_mdm_providers`,
 `list_browser_providers`, `list_browser_policies`, `get_billing`, `get_reports_overview`,
 `list_reports`, `get_report`, `get_compliance_risk_report`,
 `verify_evidence_chain`, `list_model_artifacts`, `get_model_artifact`, `list_policy_bundles`,
