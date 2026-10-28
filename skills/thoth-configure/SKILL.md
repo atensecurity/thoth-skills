@@ -133,7 +133,9 @@ one. Prefer `--json` output in scripts. Check the headless guide for
 guessing flags. Groups include `governance policies` (policy rules),
 `exceptions` and `exceptions artifacts`, `agents mode` and `agents
 quarantine`, `endpoints`, `fleets`, `kill-switch` (needs `--confirm`),
-`team`, `slack`, `settings security`, `api-keys` and `billing`.
+`team`, `slack`, `settings security`, `api-keys`, `model-artifacts` (register,
+verify provenance, screen, waive and activate; waive and activate need
+`--confirm`) and `billing`.
 
 ## Guardrails
 
