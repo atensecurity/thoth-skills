@@ -135,7 +135,8 @@ guessing flags. Groups include `governance policies` (policy rules),
 quarantine`, `endpoints`, `fleets`, `kill-switch` (needs `--confirm`),
 `team`, `slack`, `settings security`, `api-keys`, `model-artifacts` (register,
 verify provenance, screen, waive and activate; waive and activate need
-`--confirm`) and `billing`.
+`--confirm`), `support` (the Slack Connect channel with Aten; signed-in
+organization admins) and `billing`.
 
 ## Guardrails
 
