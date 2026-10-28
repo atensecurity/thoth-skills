@@ -46,12 +46,23 @@ enforcer and registration endpoints from `THOTH_TENANT_ID` and
 5. **Verify** by restarting the client and calling one read-only tool and
    one tool policy should refuse. Confirm the refused call never reached the
    upstream server and both decisions appear in decision history.
+6. **Check health** with `thoth status` (which servers are governed),
+   `thoth health` and `thoth doctor`. `thoth manual` has every command and
+   option.
 
 ## Fleets
 
 For managed devices, don't hand-edit each machine. Follow the fleet guide
 and the MDM-specific onboarding (Jamf, Intune, Kandji), use the organization
 tooling for endpoint keys, and validate on a pilot group first.
+
+Each machine running the proxy is an endpoint in a fleet. Fleets and their
+rollouts (`preview_fleet`, `thothctl fleets`, `thoth_fleet`) and single or
+bulk endpoint changes (`preview_endpoint`, `thothctl endpoints`) are managed
+as code: quarantine a device, or run it in `observe` before `enforce`. An
+endpoint can be turned off entirely only with Terraform or `thothctl`, never
+over MCP. A quarantined endpoint has every tool call refused until the
+quarantine is lifted.
 
 ## Guardrails
 

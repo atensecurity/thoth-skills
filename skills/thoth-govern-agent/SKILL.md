@@ -10,7 +10,8 @@ metadata:
 # Govern an agent's tool calls with Thoth
 
 Thoth evaluates each proposed action before it executes and returns `ALLOW`,
-`STEP_UP` (pause for an approver) or `BLOCK`. Your job is to make sure every
+`STEP_UP` (pause for an approver) or `BLOCK` (the dashboard and `thothctl` show
+it as `DENY`; SDK code still compares against `BLOCK`). Your job is to make sure every
 tool the agent can run goes through the SDK's governed wrapper, with no other
 route to the original callback.
 
@@ -28,11 +29,17 @@ route to the original callback.
    external MCP server. Wrap that execution path. Wrapping only the model
    client is not enough.
 3. Confirm with the user which agent ID and exact tool names to use, and that
-   their administrator has (or will) configure policy for them.
+   their administrator has (or will) configure policy for them. Thoth also
+   lists the tools it sees (`thothctl tools list`); confirming what each tool
+   does (`thothctl tools confirm`, `preview_tool_declaration`) is what lets
+   policy treat it correctly.
 
 ## Connection settings
 
-The SDK needs three values from the user's tenant, read from the environment:
+Register the agent first with `thothctl init` (or `thoth init`), which sets
+up the agent and its profile, or have an administrator register it
+(`preview_agent_registration`, the `thoth_agent` resource). The SDK then
+needs three values from the user's tenant, read from the environment:
 
 ```bash
 export THOTH_TENANT_ID="<tenant-id>"
@@ -67,8 +74,13 @@ export THOTH_FAIL_OPEN=false
   process-wide session across users.
 - **`STEP_UP` pauses.** Let the SDK's approval flow resolve. Do not run the
   callback while a hold is pending, or after denial, expiry or an error.
-- **Observe mode does not enforce.** Python observe mode bypasses the
-  enforcer; use an enforcing mode to verify behaviour.
+- **Two kinds of observe.** The Python SDK's local observe mode bypasses the
+  enforcer entirely, so nothing is decided or recorded; don't use it to
+  verify. An agent's server-side mode (`observe` or `enforce`, set with
+  `preview_enforcement_mode`, `thothctl agents mode set` or
+  `thoth_agent_enforcement`) is different: in `observe` Thoth evaluates and
+  records every action and lets it run, which is the safe way to roll an
+  agent out. Switch to `enforce` once the decisions look right.
 - Keep secrets and unnecessary personal data out of tool arguments, results
   and metadata.
 
@@ -96,7 +108,8 @@ For a trial, the first-agent guide uses the `trial-demo` agent with
 `demo.read` (allowed) and `shell.exec` (blocked):
 https://docs.atensecurity.com/docs/getting-started/quickstart.md. A `BLOCK`
 there quarantines `trial-demo`; an administrator restores it under
-**Agents → trial-demo → Restore Agent** before re-running.
+**Agents → trial-demo → Restore Agent** (or `thothctl agents quarantine lift
+--agent-id trial-demo`) before re-running.
 
 ## Related skills
 

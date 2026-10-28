@@ -1,6 +1,6 @@
 ---
 name: thoth-configure
-description: Configure and operate a Thoth workspace from code or an AI client instead of the dashboard, using the thothctl CLI, the Terraform provider (atensecurity/thoth), the Pulumi provider (pulumi-thoth), or the Thoth configuration MCP server set up with thothctl mcp config. Use when setting up Thoth, managing governance settings, webhooks, SIEM, API keys or fleets as code, connecting Claude Code, Codex or Cursor to Thoth's configuration server, or deploying Thoth configuration through CI/CD.
+description: Configure and operate a Thoth workspace from code or an AI client instead of the dashboard, using the thothctl CLI, the Terraform provider (atensecurity/thoth), the Pulumi provider (pulumi-thoth), or the Thoth configuration MCP server set up with thothctl mcp config. Use when setting up Thoth, managing governance settings, policy rules, webhooks, SIEM, sign-in security, team members, API keys, fleets or endpoints as code, connecting Claude Code, Codex or Cursor to Thoth's configuration server, or deploying Thoth configuration through CI/CD.
 license: Apache-2.0
 metadata:
   author: Aten Security
@@ -108,14 +108,28 @@ Never commit a preview the user hasn't reviewed.
    `.terraform/` out of source control; state can contain secrets.
 5. Use one workflow per tenant singleton and coordinate with other
    administrators.
+6. Resources that belong to a person, such as `thoth_team_member` and
+   `thoth_slack_approvals`, need the provider to act as a signed-in admin
+   (`use_thothctl_session = true` after `thothctl auth login`); API-key runs
+   are refused for them. Policy rules are `thoth_policy`; a rule created with
+   a key that is not an org admin's stays pending until an org admin
+   approves it.
 
 ## thothctl
 
 `thothctl` ships in the same release as the `thoth` binary. For CI, set
 `THOTH_TENANT_ID`, `THOTH_APEX_DOMAIN` and an organization key in
-`THOTH_API_KEY`; interactive admins can use `thothctl auth login`. Prefer
-`--json` output in scripts. Check the headless guide for `bootstrap` flags
-before using them, and confirm risk thresholds (`--shadow-*`) with the user.
+`THOTH_API_KEY`; interactive admins can use `thothctl auth login`, and
+`thothctl auth step-up` confirms a second factor ahead of changes that need
+one. Prefer `--json` output in scripts. Check the headless guide for
+`bootstrap` flags before using them, and confirm risk thresholds
+(`--shadow-*`) with the user.
+
+`thothctl manual` prints every command with its options; read it rather than
+guessing flags. Groups include `governance policies` (policy rules),
+`exceptions` and `exceptions artifacts`, `agents mode` and `agents
+quarantine`, `endpoints`, `fleets`, `kill-switch` (needs `--confirm`),
+`team`, `slack`, `settings security`, `api-keys` and `billing`.
 
 ## Guardrails
 

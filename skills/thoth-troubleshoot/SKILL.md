@@ -1,6 +1,6 @@
 ---
 name: thoth-troubleshoot
-description: "Diagnose unexpected Thoth decisions and errors in governed agents: tell a policy refusal (BLOCK or STEP_UP) apart from an authentication, rate-limit or transport failure, read the recorded explanation of a decision, fix 401/403 key problems, and recover a quarantined agent. Use when a governed tool is refused or held unexpectedly, ThothPolicyViolation or PolicyViolationError appears, the SDK can't reach Thoth, or a user asks why Thoth made a decision."
+description: "Diagnose unexpected Thoth decisions and errors in governed agents: tell a policy refusal (BLOCK, shown as DENY, or STEP_UP) apart from an authentication, billing, rate-limit or transport failure, read the recorded explanation of a decision, fix 401/403 key problems, find a held action, and recover a quarantined agent or endpoint. Use when a governed tool is refused or held unexpectedly, ThothPolicyViolation or PolicyViolationError appears, the SDK can't reach Thoth, or a user asks why Thoth made a decision."
 license: Apache-2.0
 metadata:
   author: Aten Security
@@ -13,8 +13,8 @@ Start by separating two very different things. SDKs fail closed, so a
 refusal exception can mean either:
 
 - **A policy decision**: the server evaluated the action and returned
-  `BLOCK` or `STEP_UP`. It has a reason and a correlation ID in decision
-  history.
+  `BLOCK` (shown as `DENY` in the dashboard and `thothctl`) or `STEP_UP`. It
+  has a reason and a correlation ID in decision history.
 - **A failure to get a decision**: bad key, wrong endpoint, rate limit,
   network or service error. No policy blocked the tool.
 
@@ -41,7 +41,11 @@ https://docs.atensecurity.com/docs/getting-started/troubleshooting.md
 | 429, timeouts, 5xx | Honour retry guidance, avoid tight retry loops, keep fail-open off. A refusal here is not a policy block |
 | Unexpected `STEP_UP` | Tool unconfirmed (`unknown` class) or a class `safe-default` reviews (execute, delete, export, external call, bulk, credentials). See `thoth-policies` |
 | Unexpected `BLOCK` | Hard constraints (blocklist, quarantine, quota), a profile's named rule, or sensitive data leaving |
-| Everything refused after a `BLOCK` | The agent may be quarantined. An administrator restores it (trial demo: **Agents → trial-demo → Restore Agent**) |
+| Everything refused after a `BLOCK` | The agent may be quarantined, or its session isolated (isolating a session quarantines its agent). An administrator lifts it with `preview_agent_quarantine`, `thothctl agents quarantine lift --agent-id <id>` or the dashboard (trial demo: **Agents → trial-demo → Restore Agent**) |
+| Every tool on one machine refused | The endpoint may be quarantined (or a kill switch pulled). Lift it with `preview_endpoint` or `thothctl endpoints quarantine lift --endpoint-id <id>`; after a kill switch, lift each agent and endpoint |
+| 402 or a billing message | The plan's limit or credits are used up, or the trial ended. Not a policy decision: an administrator checks Billing (`get_billing`, `thothctl billing`) |
+| Refusals recorded, but the action ran | The agent runs in `observe`: Thoth records what enforcing would decide and lets the action run. Switch to `enforce` (`preview_enforcement_mode`, `thothctl agents mode set`) when the decisions look right |
+| Action waits | `STEP_UP` holds it for a person. Find it with `get_held_action` or the approvals list; it resolves in Slack, the dashboard or with `preview_action_resolution` (a person confirms) |
 | Changed `approved_scope`, decision unchanged | Expected. Scope is context; it doesn't install policy |
 | Activation progress moved but result looks wrong | Progress records the first finalized decision, including refusals. Check decision history |
 

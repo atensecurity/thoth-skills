@@ -3,15 +3,16 @@
 Skills that teach Claude Code, Codex and other agents how to work with
 [Thoth](https://docs.atensecurity.com), the runtime enforcement layer for AI
 agents by Aten Security. Thoth evaluates each agent action before it executes
-and returns `ALLOW`, `STEP_UP` or `BLOCK`.
+and returns `ALLOW`, `STEP_UP` or `BLOCK` (shown as `DENY` in the dashboard
+and `thothctl`).
 
 | Skill | Helps your agent |
 | --- | --- |
-| `thoth-govern-agent` | Put an agent's tool calls behind Thoth with the Python, TypeScript or Go SDK, and verify the first decisions |
-| `thoth-policies` | Choose a profile, confirm tool declarations and action classes, write `action_class` rules, plan approvals |
-| `thoth-configure` | Configure Thoth with Terraform, Pulumi, `thothctl` or the Thoth configuration MCP server |
-| `thoth-mcp-proxy` | Govern MCP servers used by Claude Desktop, Claude Code or Cursor with the `thoth` proxy |
-| `thoth-troubleshoot` | Tell a policy refusal from a service error, read a decision's explanation, recover a quarantined agent |
+| `thoth-govern-agent` | Put an agent's tool calls behind Thoth with the Python, TypeScript or Go SDK, roll it out in observe mode, and verify the first decisions |
+| `thoth-policies` | Choose a profile, confirm tool declarations, write policy rules (`thoth_policy`, `thothctl governance policies`), move agents from observe to enforce, handle exceptions |
+| `thoth-configure` | Configure Thoth with Terraform, Pulumi, `thothctl` or the Thoth configuration MCP server, including team, sign-in security, fleets and endpoints |
+| `thoth-mcp-proxy` | Govern MCP servers used by Claude Desktop, Claude Code or Cursor with the `thoth` proxy, and manage the endpoints it runs on |
+| `thoth-troubleshoot` | Tell a policy refusal from a service error or a billing limit, read a decision's explanation, resolve held actions, recover a quarantined agent or endpoint |
 
 The skills follow the open [Agent Skills](https://agentskills.io) format. They
 link to the live Thoth documentation for versions and exact APIs, so they stay
