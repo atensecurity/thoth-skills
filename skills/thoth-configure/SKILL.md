@@ -55,7 +55,9 @@ user and a commit returns a one-time approval link the user approves in the
 browser with MFA. With `--auth api-key` the config references
 `THOTH_ORG_API_KEY` by name; the key itself is never written to the file.
 
-Useful tools: `get_setup_status`, `get_attention`, `list_agents`,
+Useful tools: `get_setup_status`, `get_attention`, `list_agents`, `get_agent`, `list_decisions`,
+`get_approval`, `get_support_channel`, `prepare_support_channel` and `prepare_support_invitation` (an org
+admin confirms each in the browser),
 `list_tool_inventory`, `list_profiles`, `preview_tool_declaration`,
 `preview_profile_selection`, `preview_enforcement_mode`, `preview_agent_quarantine`, `preview_kill_switch`,
 `list_discovered_agents`, `preview_discovered_agent`, `get_slack_approvals`,
