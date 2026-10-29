@@ -1,7 +1,7 @@
 {
   "name": "thoth",
   "displayName": "Thoth",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Skills for governing AI agents with Thoth: put tool calls behind runtime enforcement, write and choose policy, configure Thoth as code, govern MCP servers, and troubleshoot decisions.",
   "author": {
     "name": "Aten Security",
