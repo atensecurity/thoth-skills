@@ -64,7 +64,9 @@ admin confirms each in the browser),
 `preview_profile_selection`, `preview_enforcement_mode`, `preview_agent_quarantine`, `preview_kill_switch`,
 `list_discovered_agents`, `preview_discovered_agent`, `get_slack_approvals`,
 `list_slack_reviewer_candidates`, `preview_slack_approvals`, `get_data_handling`,
-`preview_data_handling`, `get_siem_decision_stream`, `preview_siem_decision_stream`,
+`preview_data_handling`, `get_recipient_policy`, `preview_recipient_policy` (start in
+`observe` to see what `enforce` would hold), `get_siem_decision_stream`,
+`preview_siem_decision_stream`,
 `get_org_security_settings`, `preview_org_security_settings` (signed-in org admins; read
 `caller_address` first and keep it in any IP allowlist, or the change is refused),
 `preview_workspace_settings` (no secrets; those stay with `thothctl settings set`), `list_team_members`,
