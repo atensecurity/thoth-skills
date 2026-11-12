@@ -63,7 +63,10 @@ admin confirms each in the browser),
 `list_tool_inventory`, `list_profiles`, `preview_tool_declaration`,
 `preview_profile_selection`, `preview_enforcement_mode`, `preview_agent_quarantine`, `preview_kill_switch`,
 `list_discovered_agents`, `preview_discovered_agent`, `get_slack_approvals`,
-`list_slack_reviewer_candidates`, `preview_slack_approvals`, `get_data_handling`,
+`list_slack_reviewer_candidates`, `preview_slack_approvals`, `get_approvers`,
+`list_approver_candidates`, `preview_approvers` (signed-in admins; the approver list for a
+workspace without Slack: an empty list means nobody can approve, so removing every approver
+needs `clear` and the user's explicit say-so), `get_data_handling`,
 `preview_data_handling`, `get_compliance_declaration`, `preview_compliance_declaration` (start in `observe`; mappings, not
 certifications), `get_recipient_policy`, `preview_recipient_policy` (start in
 `observe` to see what `enforce` would hold), `get_siem_decision_stream`,
